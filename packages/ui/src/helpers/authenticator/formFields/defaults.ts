@@ -1,7 +1,7 @@
 /**
  * This file contains helpers that generate default formFields for each screen
  */
-import { getActorState } from '../actor';
+import { getActorContext, getActorState } from '../actor';
 import { defaultFormFieldOptions } from '../constants';
 import { isAuthFieldWithDefaults } from '../form';
 import {
@@ -12,6 +12,7 @@ import {
   SignUpAttribute,
 } from '../../../types';
 import {
+  AuthActorContext,
   AuthMachineState,
   SignInState,
 } from '../../../machines/authenticator/types';
@@ -166,6 +167,24 @@ const getForceNewPasswordFormFields = (state: AuthMachineState): FormFields => {
   return formField;
 };
 
+const getMfaSelectionFormFields = (state: AuthMachineState): FormFields => {
+  const { allowedMfaTypes = [] } = (getActorContext(state) ??
+    {}) as AuthActorContext;
+
+  return {
+    mfa_type: {
+      ...getDefaultFormField('mfa_type'),
+      allowedMfaTypes,
+    },
+  };
+};
+
+const getSetupEmailFormFields = (_: AuthMachineState): FormFields => ({
+  email: {
+    ...getDefaultFormField('email'),
+  },
+});
+
 /** Collect all the defaultFormFields getters */
 export const defaultFormFieldsGetters: Record<
   FormFieldComponents,
@@ -180,4 +199,7 @@ export const defaultFormFieldsGetters: Record<
   confirmResetPassword: getConfirmResetPasswordFormFields,
   confirmVerifyUser: getConfirmationCodeFormFields,
   setupTotp: getConfirmationCodeFormFields,
+  mfaSetupSelection: getMfaSelectionFormFields,
+  setupEmail: getSetupEmailFormFields,
+  selectMfa: getMfaSelectionFormFields,
 };

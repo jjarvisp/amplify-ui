@@ -65,6 +65,15 @@ export const getRoute = (
        * signIn actor is running.
        */
       return 'transition';
+    case actorState?.matches('mfaSetupSelection.edit'):
+    case actorState?.matches('mfaSetupSelection.submit'):
+      return 'mfaSetupSelection';
+    case actorState?.matches('setupEmail.edit'):
+    case actorState?.matches('setupEmail.submit'):
+      return 'setupEmail';
+    case actorState?.matches('selectMfa.edit'):
+    case actorState?.matches('selectMfa.submit'):
+      return 'selectMfa';
     default:
       return null;
   }

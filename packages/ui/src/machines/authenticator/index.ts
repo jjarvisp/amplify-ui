@@ -312,6 +312,7 @@ export function createAuthenticatorMachine(
             step: event.data.step,
             totpSecretCode: event.data.totpSecretCode,
             unverifiedUserAttributes: event.data.unverifiedUserAttributes,
+            allowedMfaTypes: event.data.allowedMfaTypes,
           }),
         }),
         applyAmplifyConfig: assign({

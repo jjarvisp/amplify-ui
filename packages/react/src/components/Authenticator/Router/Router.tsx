@@ -10,6 +10,8 @@ import { ConfirmSignIn } from '../ConfirmSignIn/ConfirmSignIn';
 import { ConfirmResetPassword, ForgotPassword } from '../ForgotPassword';
 import { isSignInOrSignUpRoute } from '../utils';
 import { RouterProps } from './types';
+import { MfaSelection } from '../MfaSelection';
+import { SetupEmail } from '../SetupEmail';
 
 type RouteComponent = (props: Omit<RouterProps, 'children'>) => JSX.Element;
 
@@ -44,6 +46,11 @@ const getRouteComponent = (route: string): RouteComponent => {
       return VerifyUser;
     case 'confirmVerifyUser':
       return ConfirmVerifyUser;
+    case 'selectMfa':
+    case 'mfaSetupSelection':
+      return MfaSelection;
+    case 'setupEmail':
+      return SetupEmail;
     default:
       // eslint-disable-next-line no-console
       console.warn(

@@ -14,6 +14,9 @@ export const COMPONENT_ROUTE_KEYS: AuthenticatorRouteComponentKey[] = [
   'signIn',
   'signUp',
   'verifyUser',
+  'mfaSetupSelection',
+  'setupEmail',
+  'selectMfa',
 ];
 
 export const COMPONENT_ROUTE_NAMES: AuthenticatorRouteComponentName[] = [
@@ -27,4 +30,7 @@ export const COMPONENT_ROUTE_NAMES: AuthenticatorRouteComponentName[] = [
   'SignIn',
   'SignUp',
   'VerifyUser',
+  'MfaSetupSelection',
+  'SetupEmail',
+  'SelectMfa',
 ];

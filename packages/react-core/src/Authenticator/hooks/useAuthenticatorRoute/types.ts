@@ -15,6 +15,9 @@ import {
   SignUpBaseProps,
   VerifyUserProps,
   ConfirmVerifyUserProps,
+  MfaSetupSelectionBaseProps,
+  SetupEmailBaseProps,
+  SelectMfaBaseProps,
 } from '../types';
 
 export type UseAuthenticatorRouteParams<FieldType> = {
@@ -84,6 +87,18 @@ export type ResetPasswordMachineKey =
 
 export type SetupTotpMachineKey =
   | ExtractMachineKey<SetupTotpBaseProps>
+  | CommonRouteMachineKey;
+
+export type MfaSetupSelectionMachineKey =
+  | ExtractMachineKey<MfaSetupSelectionBaseProps>
+  | CommonRouteMachineKey;
+
+export type SetupEmailMachineKey =
+  | ExtractMachineKey<SetupEmailBaseProps>
+  | CommonRouteMachineKey;
+
+export type SelectMfaMachineKey =
+  | ExtractMachineKey<SelectMfaBaseProps>
   | CommonRouteMachineKey;
 
 export type SignInMachineKey =

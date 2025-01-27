@@ -116,6 +116,11 @@ export const defaultFormFieldOptions: DefaultFormFieldOptions = {
     autocomplete: 'username',
     isRequired: true,
   },
+  mfa_type: {
+    label: 'MFA Type',
+    type: 'radio',
+    isRequired: true,
+  },
 } as const;
 
 /**

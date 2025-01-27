@@ -19,7 +19,10 @@ export type FormFieldComponents =
   | 'confirmSignUp'
   | 'confirmVerifyUser'
   | 'forgotPassword'
-  | 'setupTotp';
+  | 'setupTotp'
+  | 'setupEmail'
+  | 'mfaSetupSelection'
+  | 'selectMfa';
 
 /**
  * Used to customize form field attributes for each authenticator screen.
@@ -68,6 +71,8 @@ export interface FormFieldOptions {
   autocomplete?: string;
   /** Whether the first character is auto-capitalized */
   autocapitalize?: string;
+  /** allowed mfa types during mfa setup or mfa selection */
+  allowedMfaTypes?: string[];
 }
 
 export interface LegacyFormFieldOptions extends FormFieldOptions {

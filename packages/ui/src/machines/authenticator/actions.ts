@@ -45,6 +45,12 @@ const setTotpSecretCode = assign({
   },
 });
 
+const setAllowedMfaTypes = assign({
+  allowedMfaTypes: (_, { data }: AuthEvent) => {
+    return data.nextStep?.allowedMFATypes || [];
+  },
+});
+
 const setSignInStep = assign({ step: 'SIGN_IN' });
 
 const setShouldVerifyUserAttributeStep = assign({
@@ -63,6 +69,8 @@ const setChallengeName = assign({
       ? 'SMS_MFA'
       : signInStep === 'CONFIRM_SIGN_IN_WITH_TOTP_CODE'
       ? 'SOFTWARE_TOKEN_MFA'
+      : signInStep === 'CONFIRM_SIGN_IN_WITH_EMAIL_CODE'
+      ? 'EMAIL_OTP'
       : undefined;
   },
 });
@@ -243,6 +251,7 @@ const ACTIONS: MachineOptions<AuthActorContext, AuthEvent>['actions'] = {
   setUsernameForgotPassword,
   setUsernameSignIn,
   setUsernameSignUp,
+  setAllowedMfaTypes,
 };
 
 export default ACTIONS;

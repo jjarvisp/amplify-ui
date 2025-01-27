@@ -45,7 +45,10 @@ export type AuthenticatorRoute =
   | 'signIn'
   | 'signUp'
   | 'transition'
-  | 'verifyUser';
+  | 'verifyUser'
+  | 'mfaSetupSelection'
+  | 'setupEmail'
+  | 'selectMfa';
 
 type AuthenticatorValidationErrors = ValidationError;
 export type AuthStatus = 'configuring' | 'authenticated' | 'unauthenticated';
@@ -64,6 +67,7 @@ interface AuthenticatorServiceContextFacade {
   user: AuthUser;
   username: string;
   validationErrors: AuthenticatorValidationErrors;
+  allowedMfaTypes: string[];
 }
 
 type SendEventAlias =

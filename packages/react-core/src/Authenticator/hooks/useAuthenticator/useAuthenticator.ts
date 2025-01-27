@@ -41,8 +41,14 @@ export default function useAuthenticator(
   const { authStatus } = context;
   const facade = useSelector(service, xstateSelector, comparator);
 
-  const { route, totpSecretCode, unverifiedUserAttributes, user, ...rest } =
-    facade;
+  const {
+    route,
+    totpSecretCode,
+    unverifiedUserAttributes,
+    user,
+    allowedMfaTypes,
+    ...rest
+  } = facade;
 
   // do not memoize output. `service.getSnapshot` reference remains stable preventing
   // `fields` from updating with current form state on value changes
@@ -63,6 +69,7 @@ export default function useAuthenticator(
     authStatus,
     route,
     totpSecretCode,
+    allowedMfaTypes,
     unverifiedUserAttributes,
     user,
     /** @deprecated For internal use only */

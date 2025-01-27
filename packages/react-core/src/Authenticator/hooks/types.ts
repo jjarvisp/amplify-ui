@@ -18,7 +18,10 @@ export type AuthenticatorRouteComponentKey =
   | 'setupTotp'
   | 'signIn'
   | 'signUp'
-  | 'verifyUser';
+  | 'verifyUser'
+  | 'mfaSetupSelection'
+  | 'setupEmail'
+  | 'selectMfa';
 
 export type AuthenticatorLegacyField = LegacyFormFieldOptions;
 export type AuthenticatorLegacyFields = AuthenticatorLegacyField[];
@@ -131,6 +134,29 @@ export type SetupTotpBaseProps<FieldType = {}> = {
   ComponentSlots<FieldType> &
   ValidationProps;
 
+export type MfaSetupSelectionBaseProps<FieldType = {}> = {
+  toSignIn: UseAuthenticator['toSignIn'];
+  allowedMfaTypes: UseAuthenticator['allowedMfaTypes'];
+  username: UseAuthenticator['username'];
+} & CommonRouteProps &
+  ComponentSlots<FieldType> &
+  ValidationProps;
+
+export type SetupEmailBaseProps<FieldType = {}> = {
+  toSignIn: UseAuthenticator['toSignIn'];
+  username: UseAuthenticator['username'];
+} & CommonRouteProps &
+  ComponentSlots<FieldType> &
+  ValidationProps;
+
+export type SelectMfaBaseProps<FieldType = {}> = {
+  toSignIn: UseAuthenticator['toSignIn'];
+  allowedMfaTypes: UseAuthenticator['allowedMfaTypes'];
+  username: UseAuthenticator['username'];
+} & CommonRouteProps &
+  ComponentSlots<FieldType> &
+  ValidationProps;
+
 export type SignInBaseProps<FieldType = {}> = {
   hideSignUp?: boolean;
   socialProviders?: UseAuthenticator['socialProviders'];
@@ -167,6 +193,9 @@ export interface DefaultProps<FieldType = {}> {
   SignIn: SignInBaseProps<FieldType>;
   SignUp: SignUpBaseProps<FieldType>;
   VerifyUser: VerifyUserProps<FieldType>;
+  MfaSetupSelection: MfaSetupSelectionBaseProps<FieldType>;
+  SetupEmail: SetupEmailBaseProps<FieldType>;
+  SelectMfa: SelectMfaBaseProps<FieldType>;
 }
 
 /**

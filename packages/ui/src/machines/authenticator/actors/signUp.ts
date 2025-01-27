@@ -58,6 +58,7 @@ const handleAutoSignInResponse = {
         'setChallengeName',
         'setMissingAttributes',
         'setTotpSecretCode',
+        'setAllowedMfaTypes',
       ],
       target: '#signUpActor.resolved',
     },
@@ -258,15 +259,18 @@ export function signUpActor({ services }: SignUpMachineOptions) {
         },
         resolved: {
           type: 'final',
-          data: (context) => ({
-            challengeName: context.challengeName,
-            missingAttributes: context.missingAttributes,
-            remoteError: context.remoteError,
-            step: context.step,
-            totpSecretCode: context.totpSecretCode,
-            username: context.username,
-            unverifiedUserAttributes: context.unverifiedUserAttributes,
-          }),
+          data: (context) => {
+            return {
+              challengeName: context.challengeName,
+              missingAttributes: context.missingAttributes,
+              remoteError: context.remoteError,
+              step: context.step,
+              totpSecretCode: context.totpSecretCode,
+              username: context.username,
+              unverifiedUserAttributes: context.unverifiedUserAttributes,
+              allowedMfaTypes: context.allowedMfaTypes,
+            };
+          },
         },
       },
     },

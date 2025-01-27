@@ -29,6 +29,8 @@ import { SignUp } from './SignUp';
 import { ForceNewPassword } from './ForceNewPassword';
 import { ForgotPassword } from './ForgotPassword';
 import { defaultComponents } from './hooks/useCustomComponents/defaultComponents';
+import { MfaSelection } from './MfaSelection';
+import { SetupEmail } from './SetupEmail';
 
 export type SignOut = UseAuthenticator['signOut'];
 export type AuthenticatorProps = Partial<
@@ -157,3 +159,5 @@ Authenticator.SetupTotp = SetupTotp;
 Authenticator.SignIn = SignIn;
 Authenticator.SignUp = SignUp;
 Authenticator.ForceNewPassword = ForceNewPassword;
+Authenticator.MfaSelection = MfaSelection;
+Authenticator.SetupEmail = SetupEmail;

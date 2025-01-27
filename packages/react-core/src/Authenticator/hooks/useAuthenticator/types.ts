@@ -20,7 +20,10 @@ export type AuthenticatorRouteComponentKey =
   | 'confirmVerifyUser'
   | 'forgotPassword'
   | 'setupTotp'
-  | 'verifyUser';
+  | 'verifyUser'
+  | 'mfaSetupSelection'
+  | 'setupEmail'
+  | 'selectMfa';
 
 export type AuthenticatorLegacyFields = LegacyFormFieldOptions[];
 
