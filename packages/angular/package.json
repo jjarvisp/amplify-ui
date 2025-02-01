@@ -43,7 +43,7 @@
   },
   "workspaces": {
     "nohoist": [
-      "@angular-devkit/build-angular"
+      "**"
     ]
   },
   "typings": "./dist/ui-angular/index.d.ts"
